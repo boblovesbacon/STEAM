@@ -28,7 +28,7 @@ public class Board{
         this.lives = 6;
     }
 
-    private boolean allLettersFilled(){
+    public boolean allLettersFilled(){
         for(Letter letter : word){
             if(!letter.isGuessed()){
                 return false;
@@ -51,7 +51,11 @@ public class Board{
         return this.lives;
     }
 
-    private void updateNumberOfLives(boolean correct){
+    public void updateNumberOfLives(boolean correct){
+        if(correct == false)
+        {
+            lives = lives - 1;
+        }
 
         /**
          * ENTER CODE FOR UPDATING NUMBER OF LIVES REMAINING
@@ -73,11 +77,6 @@ public class Board{
                 correct = true;
             }
         }
-
-
-        updateNumberOfLives(correct);
-
-
         return correct;
     }
 

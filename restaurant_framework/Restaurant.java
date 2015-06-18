@@ -6,7 +6,7 @@ public class Restaurant{
     final static String COLOR_ALLOWANCE = "\u001B[40m";
     final static String COLOR_FAILURE = "\u001B[41m";
     final static String COLOR_RESET = "\u001B[0m";
-
+    final static String COLOR_GREEN = "\u001B[42m";    
     public static void printMenu(){
         int i = 1;
         String amt;
@@ -36,11 +36,61 @@ public class Restaurant{
         double iceCreamPrice = 2.00;
         double sodaPrice = 1.50;
 
-        while(true){ /* FIX WHILE CONDITION */
-            printAllowance(allowance);
-            printMenu();
+            while(allowance >= 1.5){ // FIX WHILE CONDITION
+                printAllowance(allowance);
+                printMenu();
+                input = scan.nextInt();
+                if(input==1){
+                    if(allowance < pizzaPrice){
+                        printFailure("PIZZA");
+                    }
+                    else{
+                    
+                    allowance -= pizzaPrice;
+                    }
+                }
+                else if(input==2){
+                    if(allowance < iceCreamPrice){
+                        printFailure("ICE CREAM");
+                    }
+                    else{
+                        allowance -= iceCreamPrice;
+                    }
+                 }
+                else if(input==3){
+                    if(allowance < sodaPrice){
+                        printFailure("SODA");
+                    }
+                    else{
+                         allowance -= sodaPrice;
+                    }
+                 }
+                else if(input==10){
+                    System.out.println(COLOR_GREEN + "Hey mom! May I please have more allowance?"+ COLOR_RESET);
+                    allowance = 10;
+                }
+                else if(input==20){
+                    System.out.println(COLOR_GREEN + "Hey mom! May I please have more allowance?"+ COLOR_RESET);
+                	allowance = 20;
+                }
+                else if(input==30){
+                    System.out.println(COLOR_GREEN + "Hey mom! May I please have more allowance?"+ COLOR_RESET);
+                	allowance = 30;
+                }
+                else if(input==99999){
+                    System.out.println(COLOR_GREEN + "Hey bank manager! May I please have more allowance?"+ COLOR_RESET);
+                    allowance = 10000;
+                }
+                else{
+                    
+                    System.out.println(COLOR_FAILURE + "You left the restaurant. Have a good day!"+ COLOR_RESET);
+                    break;
+                }
+     
+            
 
-            input = scan.nextInt();
+
+
             /**
              *
              * ENTER YOUR CODE HERE
